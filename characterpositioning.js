@@ -1,22 +1,25 @@
 var input = process.argv.slice(2)
 var inputString = input.join('')
 
-function countLetters(string) {
+function positions(string) {
+
 var newString = string.split(" ").join("").toLowerCase();
 var object = {}
 var lettersChecked = []
+var count = []
 
-for (var letter of newString) {
+for (var i = 0; i < newString.length; i++) {
+  var letter = newString[i];
  if (lettersChecked.includes(letter)) {
-    object[letter] += 1;
+    object[letter].push(i);
  }
  else {
-    object[letter] = 1
+    object[letter] = [i];
     lettersChecked.push(letter)
   }
  }
- return object
+ return object;
 }
 
-console.log(countLetters(inputString))
 
+console.log(positions(inputString))
